@@ -1,0 +1,14 @@
+[project]
+name = "py-multi-key-log-rate-limiter"
+version = "0.1.0"
+description = "Applies separate rate limits to log record groups identified by a custom key function."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
