@@ -35,3 +35,10 @@ The clock is an injected callable (default `time.monotonic`) so tests are determ
 ## Awkward edges
 
 If the key function raises or returns a non-hashable value, the record is routed to a shared default bucket rather than dropped. This means a broken extractor degrades to one noisy group instead of silently losing records or unbounded memory. If that is not what you want, fix the extractor before you wire the limiter.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
